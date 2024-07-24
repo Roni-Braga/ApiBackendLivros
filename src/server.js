@@ -1,20 +1,11 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT;
-
-app.use(cors());
-app.use(express.json());
-
-
-app.get('/', (req, res) => {
-    res.send(`Welcome to my server!`)
-})
-
-app.listen(PORT, () =>{
-    console.log(`Server running on the port ${PORT}`)
-})
+// requisição para chamar o express
+const express = require('express');
+// indicando o rquivo onde estão nossas rotas
+const routes = require('./routes');
+// iniciando o servidor
+const server = express();
+// executando o servidor
+server.use('/api', routes);
+server.listen(()=>{
+    console.log("Servidor rodando")
+});
